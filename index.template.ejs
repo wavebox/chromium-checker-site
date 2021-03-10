@@ -81,7 +81,7 @@
                   <span class="outdated-stat-emph" data-hook="outdated-vulnerabilities"></span>
                 </div>
                 <div class="col text-start">
-                  Known vulnerabilities have been fixed between version <span data-hook="claims-version"></span>
+                  Known vulnerabilities have been fixed between version <span data-hook="detect-version"></span>
                   of Chromium and the latest version.
                 </div>
               </div>
@@ -90,7 +90,7 @@
                   <span class="outdated-stat-emph" data-hook="outdated-timeago"></span>
                 </div>
                 <div class="col text-start">
-                  Is when version <span data-hook="claims-version"></span> of Chromium was first released.
+                  Is when version <span data-hook="detect-version"></span> of Chromium was first released.
                 </div>
               </div>
               <div class="row  mt-4 mb-4 hide" data-hook="outdated-claims-newer">
@@ -178,9 +178,9 @@
                 <h3 class="mb-4 title">
                   <i class="bi bi-exclamation-triangle-fill"></i>
                   <div>
-                    Incorrect version. Your browser is trying to pretend that it's Chromium
-                    version <span data-hook="claims-version"></span> when in fact it's using
-                    Chromium <span data-hook="detect-version"></span>.
+                    Incorrect version. Your browser is trying to pretend that
+                    it's <span data-hook="claims-name"></span> version <span data-hook="claims-version"></span> when
+                    in fact it's using Chromium <span data-hook="detect-version"></span>.
                   </div>
                 </h3>
                 <h6>Why is this bad?</h6>
