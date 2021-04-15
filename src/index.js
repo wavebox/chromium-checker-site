@@ -83,7 +83,12 @@ function templateCreate (id) {
 
 const detect = chromiumDetector.getBrowserInfo()
 const latestChromiumVersion = window.chromiumVersions.linux.version.split('.')[0]
-const isRecentChromiumVersion = latestChromiumVersion === detect.version || `${parseInt(latestChromiumVersion) - 1}` === detect.version
+const isRecentChromiumVersion = (
+  latestChromiumVersion === detect.version ||
+  `${parseInt(latestChromiumVersion) - 1}` === detect.version ||
+  detect.version > latestChromiumVersion
+)
+
 const parser = new UAParser(window.chromiumUserAgent || window.navigator.userAgent)
 const claims = {
   name: 'Unknown',
