@@ -1,6 +1,6 @@
 {
   "name": "chromium-checker-site",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Demo site for the chromium-detector library",
   "main": "index.js",
   "scripts": {
