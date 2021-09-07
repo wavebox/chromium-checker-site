@@ -29,7 +29,7 @@
     "@popperjs/core": "^2.9.0",
     "bootstrap": "^5.0.0-beta2",
     "bootstrap-icons": "^1.4.0",
-    "chromium-detector": "^1.0.10",
+    "chromium-detector": "^1.0.12",
     "escape-html": "^1.0.3",
     "github-fork-ribbon-css": "^0.2.3",
     "timeago.js": "^4.0.2",
