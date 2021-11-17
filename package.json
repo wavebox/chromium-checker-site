@@ -1,6 +1,6 @@
 {
   "name": "chromium-checker-site",
-  "version": "1.0.14",
+  "version": "1.0.16",
   "description": "Demo site for the chromium-detector library",
   "main": "index.js",
   "scripts": {
@@ -16,23 +16,23 @@
   "author": "Thomas Beverley <tom@wavebox.io>",
   "license": "MPL-2.0",
   "devDependencies": {
-    "copy-webpack-plugin": "^8.0.0",
-    "css-loader": "^5.1.1",
-    "html-webpack-plugin": "^5.2.0",
-    "mini-css-extract-plugin": "^1.3.9",
-    "standard": "^16.0.3",
-    "style-loader": "^2.0.0",
-    "webpack": "^5.24.3",
-    "webpack-cli": "^4.5.0"
+    "copy-webpack-plugin": "^9.1.0",
+    "css-loader": "^6.5.1",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.4.4",
+    "standard": "^16.0.4",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.64.1",
+    "webpack-cli": "^4.9.1"
   },
   "dependencies": {
-    "@popperjs/core": "^2.9.0",
-    "bootstrap": "^5.0.0-beta2",
-    "bootstrap-icons": "^1.4.0",
-    "chromium-detector": "^1.0.15",
+    "@popperjs/core": "^2.10.2",
+    "bootstrap": "^5.1.3",
+    "bootstrap-icons": "^1.7.1",
+    "chromium-detector": "1.0.16",
     "escape-html": "^1.0.3",
     "github-fork-ribbon-css": "^0.2.3",
     "timeago.js": "^4.0.2",
-    "ua-parser-js": "^0.7.24"
+    "ua-parser-js": "^1.0.2"
   }
 }
