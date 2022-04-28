@@ -1,0 +1,16 @@
+#masthead {
+  background-color: #1A4E86;
+  color: #D5D5D5;
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+#masthead h1 {
+  font-size: 1.5rem;
+  color: #FFF;
+}
+#masthead .logo {
+  width: 100%;
+  max-width: 300px;
+  display: block;
+  margin: 0px auto;
+}

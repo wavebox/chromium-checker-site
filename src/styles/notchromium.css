@@ -1,0 +1,24 @@
+#not-chromium {
+  background-color: #F6F6F6;
+  min-height: 100vh;
+}
+#not-chromium .detection {
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+#not-chromium .detection .browser-icon {
+  width: 64px;
+  height: 64px;
+  margin-right: 16px;
+}
+
+#not-chromium .alternative-browsers {
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+#not-chromium .alternative-browsers .browser-icon {
+  width: 32px;
+  height: 32px;
+  margin-right: 8px;
+}

@@ -1,0 +1,9 @@
+.hide {
+  display: none !important;
+}
+[data-template] {
+  display: none !important;
+}
+.text-blue {
+  color: #1A4E86;
+}

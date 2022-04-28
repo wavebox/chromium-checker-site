@@ -1,0 +1,14 @@
+footer {
+  background-color: #1A4E86;
+  color: #FFF;
+  padding-bottom: 64px;
+  padding-top: 64px;
+}
+footer a {
+  color: #FFF !important;
+}
+footer .logo {
+  width: 64px;
+  height: 64px;
+  margin-right: 16px;
+}

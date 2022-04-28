@@ -41,7 +41,7 @@
         </div>
         <a data-tt="info" target="_blank">More info</a>
       </li>
-    </div>
+    </div
 
 
     <main>
@@ -55,17 +55,215 @@
               <img src="/assets/logo.png" class="logo" />
             </div>
             <div class="col-sm-6 text-center text-md-start">
-              <h1 class="mb-3">Which version of Chromium am I using?</h1>
+              <h1 class="mb-3">Is my Chromium browser up to date?</h1>
               <p class="mb-4">
-                Ignore what the UserAgent claims and use feature
-                detection to figure out which version of Chromium
-                you're really using.
+                Check if your Chromium browser is up to date and secure by using feature
+                detection to look for the latest features.
               </p>
             </div>
           </div>
         </div>
       </div>
-      <div id="outdated-warning" data-hook="outdated-warning" class="hide bg-danger text-white">
+
+      <div id="not-chromium" class="hide">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-6 offset-sm-3 detection">
+              <h3 class="mb-4 title text-center">
+                <div data-hook="detected-firefox" class="hide">
+                  <img src="/assets/firefox.svg" class="browser-icon" />
+                  It looks like you're using firefox
+                </div>
+                <div data-hook="detected-safari" class="hide">
+                  <img src="/assets/safari.png" class="browser-icon" />
+                  It looks like you're using Safari
+                </div>
+                <div data-hook="detected-unknown" class="hide">
+                  <i class="bi bi-question-circle-fill"></i>&nbsp;
+                  It doesn't look like your using a browser that's built on Chromium.
+                </div>
+              </h3>
+              <p class="text-muted text-center">
+                Chromium Checker only works with browsers that are built on <a href="https://www.chromium.org/chromium-projects/" target="_blank">Chromium.</a>
+                If you still want to give this a try, why not try in one of these browsers...
+              </p>
+            </div>
+            <div class="col-sm-6 offset-sm-3 alternative-browsers">
+              <div class="list-group">
+                <a class="list-group-item list-group-item-action" href="https://brave.com/download" target="_blank">
+                  <img src="/assets/brave.png" class="browser-icon" />
+                  Brave
+                </a>
+                <a class="list-group-item list-group-item-action" href="https://chrome.google.com" target="_blank">
+                  <img src="/assets/chrome.svg" class="browser-icon" />
+                  Google Chrome
+                </a>
+                <a class="list-group-item list-group-item-action" href="https://microsoft.com/edge" target="_blank">
+                  <img src="/assets/edge.svg" class="browser-icon" />
+                  Microsoft Edge
+                </a>
+                <a class="list-group-item list-group-item-action" href="https://vivaldi.com/download/" target="_blank">
+                  <img src="/assets/vivaldi.svg" class="browser-icon" />
+                  Vivaldi
+                </a>
+                <a class="list-group-item list-group-item-action" href="https://wavebox.io/download" target="_blank">
+                  <img src="/assets/wavebox.svg" class="browser-icon" />
+                  Wavebox
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="is-chromium" class="hide">
+        <div id="chromium-recent" class="hide">
+          <div class="container">
+            <div class="row browser-info">
+              <div class="col-sm-6 offset-sm-3">
+                <h4 class="mb-4 title">
+                  <img src='' data-hook="browser-icon" />
+                  <div>
+                    It looks like you're using <span data-hook="browser-name"></span> <span data-hook="detected-version"></span>
+                  </div>
+                </h4>
+                <h4 class="mb-4 title">
+                  <i class="bi bi-check-circle-fill"></i>
+                  <div>
+                    Your browser is using an up to date version of Chromium
+                  </div>
+                </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="chromium-outdated" class="hide">
+          <div class="container">
+            <div class="row browser-info">
+              <div class="col-sm-6 offset-sm-3">
+                <h4 class="mb-4 title">
+                  <img src='' data-hook="browser-icon" />
+                  <div>
+                    It looks like you're using <span data-hook="browser-name"></span> <span data-hook="detected-version"></span>
+                  </div>
+                </h4>
+                <h4 class="mb-4 title">
+                  <i class="bi bi-exclamation-triangle-fill"></i>
+                  <div>
+                    Your browser is out of date!
+                  </div>
+                </h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-8 offset-sm-2">
+                <h5>There are <span data-hook="vulnerability-count"></span> known vulnerabilities in this version</h5>
+                <div class="list-group" id="vulnerability-list">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="chromium-claims-incorrect" class="hide">
+          <div class="container">
+            <div class="row browser-info">
+              <div class="col-sm-6 offset-sm-3">
+                <h4 class="mb-4 title">
+                  <i class="bi bi-exclamation-triangle-fill"></i>
+                  <div>Your browser is spoofing it's version number</div>
+                </h4>
+                <div class="title">
+                  <i class="bi bi-exclamation-triangle-fill" style="visibility: hidden;"></i>
+                  <div>
+                    <div class="text-small">Claims to be Chromium <span data-hook="browser-version"></span></div>
+                    <div>Detected Chromium <span data-hook="detected-version"></span></div>
+                    <br />
+                    <div>
+                      <small>
+                        <b>Why does this matter?</b> Some browsers spoof their version number to pretend to
+                        be more up to date than what they are. This can bypass ecurity checks that are
+                        meant to keep you safe and expose you to known vulnerabilities.
+                      </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <br />
+        <div class="row mb-2">
+          <div class="col-sm-8 offset-sm-2">
+            <h3 class="text-blue">How did we figure this out?</h3>
+          </div>
+        </div>
+        <br />
+        <div class="row mt-2 mb-2">
+          <div class="col-sm-8 offset-sm-2">
+            <h5 class="text-blue mb-0">
+              This is what your browser advertises in the UserAgent & Client hints...
+            </h5>
+            <hr class="mt-1" />
+            <div class="hide" data-hook="ua-matching-useragent">
+              <small>
+                <strong class="text-blue">User Agent :</strong>
+                <span class="text-muted" data-hook="ua-useragent"></span>
+              </small>
+            </div>
+            <div class="hide" data-hook="ua-differing-useragent">
+              <div>
+                <small>
+                  <strong class="text-blue">User Agent (Request Headers):</strong>
+                  <span class="text-muted" data-hook="ua-useragent-headers"></span>
+                </small>
+              </div>
+              <div>
+                <small>
+                  <strong class="text-blue">User Agent (JavaScript):</strong>
+                  <span class="text-muted" data-hook="ua-useragent-js"></span>
+                </small>
+              </div>
+            </div>
+            <div>
+              <small>
+                <strong class="text-blue">Client Hints:</strong>
+                <span class="text-muted" data-hook="ua-client-hints"></span>
+              </small>
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="row mt-2">
+          <div class="col-sm-8 offset-sm-2">
+            <h5 class="text-blue mb-0">
+              We did some detection and checked available features
+              against known features in each version of Chromium...
+            </h5>
+            <hr class="mt-1" />
+            <p class="text-muted">
+              <small>
+                Each release of Chromium includes a new set of features that are
+                documented on the <a href="https://chromestatus.com/features" target="_blanl">Chrome Platform Status</a>
+                page. We can check to see if these features are present in your browser
+                and then figure out which version of Chromium is being used. Below
+                are what we looked for against each version and whether they could be
+                found or not.
+              </small>
+            </p>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 offset-sm-2">
+              <div id="detection-tests"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--div id="outdated-warning" data-hook="outdated-warning" class="hide bg-danger text-white">
         <div class="container">
           <div class="row">
             <div class="col-sm-10 offset-sm-1">
@@ -262,7 +460,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div-->
     </main>
     <footer>
       <div class="container">
@@ -271,7 +469,7 @@
             <img src="/assets/wavebox.svg" class="logo" />
             <div>
               <div>Chromium Checker has been created by Wavebox.</div>
-              <div><small>© 2021 Wavebox. All rights reserved.</small></div>
+              <div><small>© 2022 Wavebox. All rights reserved.</small></div>
               <div>
                 <a href="https://wavebox.io">Wavebox</a>
                 <a href="https://github.com/wavebox/chromium-checker-site">GitHub</a>

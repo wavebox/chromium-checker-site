@@ -1,241 +1,213 @@
 import UAParser from 'ua-parser-js'
-import chromiumDetector from 'chromium-detector'
-import { format as timeago } from 'timeago.js'
+import { getBrowserInfo } from './detector'
 import escapeHtml from 'escape-html'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import 'github-fork-ribbon-css/gh-fork-ribbon.css'
-import './style.css'
+import { $setSrc, $setText, templateCreate, $show } from './utils'
+import './styles/utils.css'
+import './styles/masthead.css'
+import './styles/footer.css'
+import './styles/notchromium.css'
+import './styles/chromium.css'
 
 /* ************************************************************** */
-// Utils
+// Not Chromium
 /* ************************************************************** */
 
 /**
- * Maps across each of the elements from a query selector
- * @param querySelector: the query selector, NodeList, or array to use
- * @param fn: function to execute
+ * Renders the not chromium view
  */
-function $each (querySelector, fn) {
-  if (typeof (querySelector) === 'string') {
-    Array.from(document.querySelectorAll(querySelector)).forEach(fn)
-  } else if (typeof (querySelector) === 'object' && querySelector.constructor === window.NodeList) {
-    Array.from(querySelector).forEach(fn)
-  } else if (Array.isArray(querySelector)) {
-    querySelector.forEach(fn)
+function renderNotChromium () {
+  $show('#not-chromium')
+  const parser = new UAParser(window.navigator.userAgent)
+  switch (parser.getBrowser().name) {
+    case 'Firefox':
+      $show('#not-chromium [data-hook="detected-firefox"]')
+      break
+    case 'Mobile Safari':
+    case 'Safari':
+      $show('#not-chromium [data-hook="detected-safari"]')
+      break
+    default:
+      $show('#not-chromium [data-hook="detected-unknown"]')
+      break
   }
 }
 
-/**
- * Removes the class from multiple items
- * @param querySelector: the queryselector to use
- * @param className: the classname to remove
- */
-function $classListRemove (querySelector, className) {
-  $each(querySelector, ($el) => $el.classList.remove(className))
-}
+/* ************************************************************** */
+// Chromium
+/* ************************************************************** */
 
 /**
- * Sets the src on the elements
- * @param querySelector: the queryselector to use
- * @param src: the src to set
+ * @returns info from the UserAgent
  */
-function $setSrc (querySelector, src) {
-  $each(querySelector, ($el) => { $el.src = src })
-}
+function getUAInfo () {
+  const parser = new UAParser(window.chromiumUserAgent || window.navigator.userAgent)
+  const info = {
+    parser,
+    name: 'Unknown',
+    version: '',
+    icon: undefined
+  }
 
-/**
- * Sets the src on the elements
- * @param querySelector: the queryselector to use
- * @param text: the text content to set
- */
-function $setText (querySelector, text) {
-  $each(querySelector, ($el) => { $el.textContent = text })
-}
-
-/**
- * Creates an element from a template
- * @param id: the id of the template
- * @return { $el, targets }
- */
-function templateCreate (id) {
-  const $el = document.querySelector(`[data-template="${id}"]`).firstElementChild.cloneNode(true)
-  const targets = Array.from($el.querySelectorAll('[data-tt]')).reduce((acc, $target) => {
-    const id = $target.getAttribute('data-tt')
-    if (acc[id]) {
-      if (!Array.isArray(acc[id])) {
-        acc[id] = [acc[id]]
-      }
-      acc[id].push($target)
-    } else {
-      acc[id] = $target
+  if (!info.name || !info.version) {
+    info.name = parser.getBrowser().name
+    info.version = (parser.getBrowser().version || '').split('.')[0]
+  }
+  if (typeof (window.navigator.brave) === 'object') {
+    info.name = 'Brave'
+  }
+  if (window.navigator.userAgentData && window.navigator.userAgentData.brands && window.navigator.userAgentData.brands.length) {
+    if (window.navigator.userAgentData.brands[0].brand === 'Wavebox') {
+      info.name = 'Wavebox'
+      info.version = window.navigator.userAgentData.brands[0].version
     }
-    return acc
-  }, {})
-
-  return { $el, targets }
-}
-
-/* ************************************************************** */
-// Parsing
-/* ************************************************************** */
-
-const detect = chromiumDetector.getBrowserInfo()
-const latestChromiumVersion = window.chromiumVersions.linux.version.split('.')[0]
-const isRecentChromiumVersion = (
-  latestChromiumVersion === detect.version ||
-  `${parseInt(latestChromiumVersion) - 1}` === detect.version ||
-  detect.version > latestChromiumVersion
-)
-
-const parser = new UAParser(window.chromiumUserAgent || window.navigator.userAgent)
-const claims = {
-  name: 'Unknown',
-  version: '',
-  icon: undefined
-}
-
-if (!claims.name || !claims.version) {
-  claims.name = parser.getBrowser().name
-  claims.version = (parser.getBrowser().version || '').split('.')[0]
-}
-if (typeof (window.navigator.brave) === 'object') {
-  claims.name = 'Brave'
-}
-if (window.navigator.userAgentData && window.navigator.userAgentData.brands && window.navigator.userAgentData.brands.length) {
-  if (window.navigator.userAgentData.brands[0].brand === 'Wavebox') {
-    claims.name = 'Wavebox'
-    claims.version = window.navigator.userAgentData.brands[0].version
   }
+
+  switch (info.name.toLowerCase()) {
+    case 'chrome':
+    case 'google chrome': info.icon = 'assets/chrome.svg'; break
+    case 'edg': info.icon = 'assets/edge.svg'; break
+    case 'firefox': info.icon = 'assets/firefox.svg'; break
+    case 'brave': info.icon = 'assets/brave.png'; break
+    case 'safari': info.icon = 'assets/safari.png'; break
+    case 'wavebox': info.icon = 'assets/wavebox.svg'; break
+    default: info.icon = 'assets/globe.svg'; break
+  }
+
+  return info
 }
 
-switch (claims.name.toLowerCase()) {
-  case 'chrome':
-  case 'google chrome': claims.icon = 'assets/chrome.svg'; break
-  case 'edg': claims.icon = 'assets/edge.svg'; break
-  case 'firefox': claims.icon = 'assets/firefox.svg'; break
-  case 'brave': claims.icon = 'assets/brave.png'; break
-  case 'safari': claims.icon = 'assets/safari.png'; break
-  case 'wavebox': claims.icon = 'assets/wavebox.svg'; break
-  default: claims.icon = 'assets/globe.svg'; break
-}
-
-/* ************************************************************** */
-// Outdated
-/* ************************************************************** */
-
-if (!isRecentChromiumVersion && detect.isChromium) {
-  $classListRemove('[data-hook="outdated-warning"]', 'hide')
-  const releaseDate = (detect.tests[detect.version] || {}).releaseDate
-  $setText(
-    '[data-hook="outdated-timeago"]',
-    releaseDate
-      ? timeago(releaseDate)
-      : 'No data'
+/**
+ * Renders the chromium view
+ * @param detection: the detection results
+ */
+function renderChromium (detection) {
+  // Grab some info
+  const uaInfo = getUAInfo()
+  const latestChromiumVersion = window.chromiumVersions.linux.version.split('.')[0]
+  const isRecentChromiumVersion = (
+    latestChromiumVersion === detection.version ||
+    `${parseInt(latestChromiumVersion) - 1}` === detection.version ||
+    parseInt(detection.version) > parseInt(latestChromiumVersion)
   )
 
-  const newerVersions = window.chromiumCVE.versions.filter((v) => v > detect.version)
-  const vulnerabilitiesFixed = newerVersions.reduce((acc, version) => {
-    return acc + window.chromiumCVE.info[version].reduce((acc, fixes) => {
-      return acc + fixes.cve.length
-    }, 0)
-  }, 0)
+  // Browser details
+  $setText('#is-chromium .browser-info [data-hook="browser-name"]', uaInfo.name)
+  $setText('#is-chromium .browser-info [data-hook="browser-version"]', uaInfo.version)
+  $setText('#is-chromium .browser-info [data-hook="detected-version"]', detection.version)
+  $setSrc('#is-chromium .browser-info [data-hook="browser-icon"]', uaInfo.icon)
 
-  $setText('[data-hook="outdated-vulnerabilities"]', vulnerabilitiesFixed)
-  if (detect.version !== claims.version) {
-    $classListRemove('[data-hook="outdated-claims-newer"]', 'hide')
-  }
-}
-
-/* ************************************************************** */
-// Claim
-/* ************************************************************** */
-
-$setSrc('[data-hook="claims-icon"]', claims.icon)
-$setText('[data-hook="claims-name"]', claims.name)
-$setText('[data-hook="claims-version"]', claims.version)
-$setText('[data-hook="claims-useragent"]', window.chromiumUserAgent || window.navigator.userAgent)
-$setText('[data-hook="claims-client-hints"]', window.navigator.userAgentData && window.navigator.userAgentData.brands
-  ? window.navigator.userAgentData.brands
-      .filter(({ brand }) => brand !== ';Not A Brand')
-      .map(({ brand, version }) => `${brand} ${version}`)
-      .join(', ')
-  : 'Not available')
-
-/* ************************************************************** */
-// Detection
-/* ************************************************************** */
-
-if (detect.isChromium) {
-  if (detect.version === claims.version) {
-    $classListRemove('[data-hook="detect-chromium-correct-version"]', 'hide')
+  // Version
+  if (isRecentChromiumVersion) {
+    $show('#chromium-recent')
   } else {
-    $classListRemove('[data-hook="detect-chromium-incorrect-version"]', 'hide')
+    $show('#chromium-outdated')
   }
-} else {
-  $classListRemove('[data-hook="detect-not-chromium"]', 'hide')
-}
-$setText(
-  '[data-hook="detect-version"]',
-  detect.couldBeOlder
-    ? `${detect.version} or older`
-    : detect.couldBeNewer
-      ? `${detect.version} or newer`
-      : detect.version
-)
 
-/* ************************************************************** */
-// Detection tests
-/* ************************************************************** */
+  if (detection.version !== uaInfo.version && !detection.couldBeNewer) {
+    $show('#chromium-claims-incorrect')
+  }
 
-Object.keys(detect.tests)
-  .sort((a, b) => parseInt(b) - parseInt(a))
-  .forEach((version) => {
-    const { result, tests, pass, releaseDate, isPreRelease } = detect.tests[version]
-    const { $el, targets } = templateCreate('detect-version')
+  // Detection tests
+  {
+    const testVersions = Object.keys(detection.tests).sort((a, b) => parseInt(b) - parseInt(a))
+    let unpachedVulnerabilities = []
+    for (const version of testVersions) {
+      const { result, pass, tests, releaseDate, isPreRelease } = detection.tests[version]
+      const { $el, targets } = templateCreate('detect-version')
 
-    const classNameMod = result === true
-      ? 'success'
-      : isPreRelease
-        ? 'info'
-        : pass === tests.length - 1
-          ? 'warning'
+      const classNameMod = result === true
+        ? 'success'
+        : isPreRelease || pass === tests.length - 1
+          ? 'info'
           : 'danger'
 
-    const vulnerabilitiesFixed = (window.chromiumCVE.info[version] || []).reduce((acc, fixes) => {
-      return acc.concat(fixes.cve)
-    }, [])
-    targets.version.textContent = `Chromium ${version}`
-    targets.release.textContent = releaseDate
-    targets.vulnerabilities.textContent = vulnerabilitiesFixed.length
-    targets.vulnerabilitiesbutton.classList.add(`btn-${classNameMod}`)
-    targets.vulnerabilitieslist.innerHTML = vulnerabilitiesFixed.map((t) => (
-      `<li><span class="dropdown-item">${escapeHtml(t)}</span></li>`
-    )).join('\n')
-    if (vulnerabilitiesFixed.length === 0) {
-      targets.vulnerabilitiescontainer.classList.add('hide')
-    }
-    targets.version.classList.add(`text-${classNameMod}`)
-
-    tests.forEach(({ name, url, test, optional }) => {
-      const { $el: $listEl, targets } = templateCreate('detect-version-test')
-      if (test) {
-        $listEl.classList.add('list-group-item-success')
-        targets.status.textContent = 'PASS'
-        targets.status.classList.add('bg-success')
-      } else {
-        const mod = isPreRelease
-          ? 'info'
-          : optional ? 'warning' : 'danger'
-        $listEl.classList.add(`list-group-item-${mod}`)
-        targets.status.textContent = optional ? 'UNAVAILABLE' : 'FAIL'
-        targets.status.classList.add(`bg-${mod}`)
+      let vulnerabilitiesFixed = []
+      for (const fixes of (window.chromiumCVE.info[version] || [])) {
+        vulnerabilitiesFixed = [...vulnerabilitiesFixed, ...fixes.cve]
+        if (classNameMod === 'danger') {
+          unpachedVulnerabilities = [...unpachedVulnerabilities, ...fixes.cve]
+        }
       }
-      targets.name.textContent = name
-      targets.info.href = url
 
-      $el.appendChild($listEl)
-    })
-    document.querySelector('#detect-tests').appendChild($el)
-  })
+      targets.version.textContent = `Chromium ${version}`
+      targets.release.textContent = releaseDate
+      targets.vulnerabilities.textContent = vulnerabilitiesFixed.length
+      targets.vulnerabilitiesbutton.classList.add(`btn-${classNameMod}`)
+      targets.vulnerabilitieslist.innerHTML = vulnerabilitiesFixed.map((t) => (
+        `<li><span class="dropdown-item">${escapeHtml(t)}</span></li>`
+      )).join('\n')
+      if (vulnerabilitiesFixed.length === 0) {
+        targets.vulnerabilitiescontainer.classList.add('hide')
+      }
+      targets.version.classList.add(`text-${classNameMod}`)
+
+      tests.forEach(({ name, url, test, optional }) => {
+        const { $el: $listEl, targets } = templateCreate('detect-version-test')
+        if (test) {
+          $listEl.classList.add('list-group-item-success')
+          targets.status.textContent = 'PASS'
+          targets.status.classList.add('bg-success')
+        } else {
+          const mod = isPreRelease || pass === tests.length - 1
+            ? 'info'
+            : optional ? 'warning' : 'danger'
+          $listEl.classList.add(`list-group-item-${mod}`)
+          targets.status.textContent = optional ? 'UNAVAILABLE' : 'FAIL'
+          targets.status.classList.add(`bg-${mod}`)
+        }
+        targets.name.textContent = name
+        targets.info.href = url
+
+        $el.appendChild($listEl)
+      })
+      document.querySelector('#detection-tests').appendChild($el)
+    }
+
+    // Aggregated vuln count
+    $setText('#is-chromium [data-hook="vulnerability-count"]', unpachedVulnerabilities.length)
+    if (unpachedVulnerabilities.length) {
+      const $el = document.getElementById('vulnerability-list')
+      for (const fix of unpachedVulnerabilities) {
+        $el.innerHTML += `<li class="list-group-item">${escapeHtml(fix)}</li>`
+      }
+    }
+  }
+
+  $show('#is-chromium')
+}
+
+/* ************************************************************** */
+// Entry
+/* ************************************************************** */
+
+function main () {
+  const detection = getBrowserInfo()
+  const { isChromium } = detection
+
+  if (isChromium) {
+    renderChromium(detection)
+  } else {
+    renderNotChromium()
+  }
+
+  $setText('#is-chromium [data-hook="ua-useragent"]', window.chromiumUserAgent || window.navigator.userAgent || 'Unavailable')
+  $setText('#is-chromium [data-hook="ua-useragent-headers"]', window.chromiumUserAgent || 'Unavailable')
+  $setText('#is-chromium [data-hook="ua-useragent-js"]', window.navigator.userAgent || 'Unavailable')
+  if (window.chromiumUserAgent === window.navigator.userAgent) {
+    $show('#is-chromium [data-hook="ua-matching-useragent"]')
+  } else {
+    $show('#is-chromium [data-hook="ua-differing-useragent"]')
+  }
+  $setText('[data-hook="ua-client-hints"]', window.navigator.userAgentData && window.navigator.userAgentData.brands
+    ? window.navigator.userAgentData.brands
+        .filter(({ brand }) => brand !== ';Not A Brand')
+        .map(({ brand, version }) => `${brand} ${version}`)
+        .join(', ')
+    : 'Not available')
+}
+
+main()

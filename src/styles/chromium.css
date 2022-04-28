@@ -1,0 +1,49 @@
+#is-chromium #chromium-recent {
+  background-color: #66BB6A;
+  color: #fff;
+}
+#is-chromium #chromium-outdated {
+  background-color: #F44336;
+  color: #fff;
+}
+#is-chromium #chromium-claims-incorrect {
+  background-color: #F9A825;
+  color: #fff;
+}
+
+#is-chromium .browser-info {
+  padding-top: 64px;
+  padding-bottom: 48px;
+}
+
+#is-chromium .browser-info [data-hook="browser-icon"],
+#is-chromium .browser-info .bi {
+  width: 40px;
+  height: 40px;
+  font-size: 40px;
+  margin-right: 12px;
+}
+
+#is-chromium .browser-info .title {
+  display: flex;
+  align-items: center;
+  font-weight: normal;
+}
+
+
+#is-chromium #detection-tests .version-history .card-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#is-chromium #detection-tests .version-history .card-title [data-tt="vulnerabilitiescontainer"] {
+  font-size: 1rem;
+}
+
+#is-chromium #vulnerability-list {
+  position: relative;
+  max-height: 223px;
+  margin-bottom: 16px;
+  overflow: auto;
+}
