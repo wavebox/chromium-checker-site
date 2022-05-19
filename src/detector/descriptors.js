@@ -8,6 +8,17 @@ import {
 
 // https://chromestatus.com/features
 export const descriptors = {
+  103: {
+    releaseDate: 'Pre-release',
+    isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5768400507764736',
+        name: 'AbortSignal.timeout() Static Method',
+        test: () => isFunction(window.AbortSignal.timeout)
+      }
+    ]
+  },
   102: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
@@ -23,9 +34,9 @@ export const descriptors = {
     releaseDate: '2022-04-26',
     tests: [
       {
-        url: 'https://chromestatus.com/feature/5273474901737472',
-        name: 'Priority Hints',
-        test: () => document.createElement('img').fetchpriority !== undefined
+        url: 'https://chromestatus.com/feature/5674031696052224',
+        name: 'font-palette and custom @font-palette-values palettes',
+        test: () => supportsCSSProp('fontPalette')
       }
     ]
   },
