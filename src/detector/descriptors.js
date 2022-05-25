@@ -20,8 +20,7 @@ export const descriptors = {
     ]
   },
   102: {
-    releaseDate: 'Pre-release',
-    isPreRelease: true,
+    releaseDate: '2022-05-25',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5703266176335872',
