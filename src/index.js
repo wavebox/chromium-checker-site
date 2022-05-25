@@ -60,7 +60,7 @@ function getUAInfo () {
     info.name = 'Brave'
   }
   if (window.navigator.userAgentData && window.navigator.userAgentData.brands && window.navigator.userAgentData.brands.length) {
-    if (window.navigator.userAgentData.brands[0].brand === 'Wavebox') {
+    if (window.navigator.userAgentData.brands.some(({ brand }) => brand === 'Wavebox')) {
       info.name = 'Wavebox'
       info.version = window.navigator.userAgentData.brands[0].version
     }
