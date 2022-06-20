@@ -109,11 +109,6 @@ export const descriptors = {
     isPreRelease: true,
     tests: [
       {
-        url: 'https://chromestatus.com/features/6304275594477568',
-        name: 'EyeDropper API',
-        test: () => isFunction(window.EyeDropper)
-      },
-      {
         url: 'https://chromestatus.com/features/5709654999957504',
         name: 'Logical properties for contain-intrinsic-size',
         test: () => supportsCSSProp('containIntrinsicBlockSize')
