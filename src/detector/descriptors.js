@@ -8,9 +8,47 @@ import {
 
 // https://chromestatus.com/features
 export const descriptors = {
-  103: {
+  105: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5452774595624960',
+        name: 'blocking=rendering attribute on scripts and style sheets',
+        test: () => window.DOMTokenList && document.createElement('script').blocking instanceof window.DOMTokenList
+      },
+      {
+        url: 'https://chromestatus.com/feature/5794378545102848',
+        name: ':has() pseudo class',
+        test: () => {
+          try {
+            document.querySelector('body:has(*)')
+            return true
+          } catch (ex) {
+            return false
+          }
+        }
+      }
+    ]
+  },
+  104: {
+    releaseDate: 'Pre-release',
+    isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5213032857731072',
+        name: 'CSS object-view-box',
+        test: () => supportsCSSProp('object-view-box')
+      },
+      {
+        url: 'https://chromestatus.com/feature/5705698193178624',
+        name: 'Individual Properties for CSS Transforms',
+        test: () => supportsCSSProp('rotate')
+      }
+    ]
+  },
+  103: {
+    releaseDate: '2022-06-21',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5768400507764736',
