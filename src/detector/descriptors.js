@@ -8,10 +8,34 @@ import {
 
 // https://chromestatus.com/features
 export const descriptors = {
+  106: {
+    releaseDate: 'Pre-release',
+    isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5707621009981440',
+        name: 'Intl.NumberFormat v3 API',
+        test: () => {
+          if (!window.Intl || !window.Intl.NumberFormat) { return false }
+          const nf = new window.Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'CHF',
+            maximumFractionDigits: 0
+          })
+          return isFunction(nf.formatRange) && nf.formatRange(3, 5) === 'CHF 3–5' // Includes invisible characters
+        }
+      }
+    ]
+  },
   105: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
     tests: [
+      {
+        url: 'https://chromestatus.com/feature/5786893650231296',
+        name: 'Feature: Sanitizer API MVP',
+        test: () => isFunction(document.body.setHTML)
+      },
       {
         url: 'https://chromestatus.com/feature/5452774595624960',
         name: 'blocking=rendering attribute on scripts and style sheets',
@@ -32,8 +56,7 @@ export const descriptors = {
     ]
   },
   104: {
-    releaseDate: 'Pre-release',
-    isPreRelease: true,
+    releaseDate: '2022-08-02',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5213032857731072',
