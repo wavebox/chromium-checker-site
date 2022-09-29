@@ -8,9 +8,41 @@ import {
 
 // https://chromestatus.com/features
 export const descriptors = {
-  106: {
+  107: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5206436850696192',
+        name: 'URLPattern ignoreCase',
+        test: () => {
+          if (!window.URLPattern) { return false }
+          try {
+            const pattern = new window.URLPattern('https://example.com/books/:id', { ignoreCase: true }) // eslint-disable-line no-unused-vars
+            return true
+          } catch (ex) {
+            if (ex.message === 'Failed to construct \'URLPattern\': Invalid baseURL \'[object Object]\'') {
+              return false
+            } else {
+              throw ex
+            }
+          }
+        }
+      },
+      {
+        url: 'https://chromestatus.com/feature/5166965277589504',
+        name: 'Render blocking status in Resource Timing',
+        test: () => {
+          if (!window.performance.getEntriesByType) { return false }
+          const resources = window.performance.getEntriesByType('resource')
+          if (!resources || !resources.length) { return false }
+          return resources[0].renderBlockingStatus !== undefined
+        }
+      }
+    ]
+  },
+  106: {
+    releaseDate: '2022-09-27',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5707621009981440',
