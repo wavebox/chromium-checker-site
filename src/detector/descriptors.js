@@ -8,9 +8,35 @@ import {
 
 // https://chromestatus.com/features
 export const descriptors = {
-  107: {
+  109: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/4998371945742336',
+        name: 'Feature: CSS "lh" Length Unit',
+        test: () => supportsCSSValue('width', '1lh')
+      }
+    ]
+  },
+  108: {
+    releaseDate: 'Pre-release',
+    isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5714791975878656',
+        name: 'Array grouping',
+        test: () => isFunction([].group) && isFunction([].groupToMap)
+      },
+      {
+        url: 'https://chromestatus.com/feature/5093352798683136',
+        name: 'Feature: Last Baseline Item Alignment',
+        test: () => supportsCSSValue('alignItems', 'last baseline')
+      }
+    ]
+  },
+  107: {
+    releaseDate: '2022-10-25',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5206436850696192',
@@ -198,7 +224,6 @@ export const descriptors = {
   },
   95: {
     releaseDate: '2021-10-19',
-    isPreRelease: true,
     tests: [
       {
         url: 'https://chromestatus.com/features/5709654999957504',
