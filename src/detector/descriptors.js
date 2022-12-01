@@ -20,14 +20,8 @@ export const descriptors = {
     ]
   },
   108: {
-    releaseDate: 'Pre-release',
-    isPreRelease: true,
+    releaseDate: '2022-11-29',
     tests: [
-      {
-        url: 'https://chromestatus.com/feature/5714791975878656',
-        name: 'Array grouping',
-        test: () => isFunction([].group) && isFunction([].groupToMap)
-      },
       {
         url: 'https://chromestatus.com/feature/5093352798683136',
         name: 'Feature: Last Baseline Item Alignment',
