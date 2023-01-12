@@ -8,9 +8,29 @@ import {
 
 // https://chromestatus.com/features
 export const descriptors = {
-  109: {
+  110: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5190163462881280',
+        name: 'AudioContext.setSinkId()',
+        test: () => isFunction(new window.AudioContext().setSinkId)
+      },
+      {
+        url: 'https://chromestatus.com/feature/5729461725036544',
+        name: 'Iframe credentialless',
+        test: () => typeof (document.createElement('iframe').credentialless) === 'boolean'
+      },
+      {
+        url: 'https://chromestatus.com/feature/5659629104136192',
+        name: 'Features: Remove window.webkitStorageInfo',
+        test: () => window.webkitStorageInfo === undefined
+      }
+    ]
+  },
+  109: {
+    releaseDate: '2023-01-11',
     tests: [
       {
         url: 'https://chromestatus.com/feature/4998371945742336',
