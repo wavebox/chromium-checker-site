@@ -8,9 +8,33 @@ import {
 
 // https://chromestatus.com/features
 export const descriptors = {
-  110: {
+  111: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5165381072191488',
+        name: 'Feature: CSS Trigonometric functions',
+        test: () => {
+          const $el = document.createElement('div')
+          $el.style.width = 'calc(100px * sin(45deg))'
+          return $el.style.width.startsWith('calc(')
+        }
+      },
+      {
+        url: 'https://chromestatus.com/feature/4668361878274048',
+        name: 'Feature: Resizable ArrayBuffer and growable SharedArrayBuffer',
+        test: () => isFunction(new ArrayBuffer().resize)
+      },
+      {
+        url: 'https://chromestatus.com/feature/5730575560736768',
+        name: 'Feature: baseline-source',
+        test: () => supportsCSSProp('baselineSource', 'first')
+      }
+    ]
+  },
+  110: {
+    releaseDate: '2023-02-07',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5190163462881280',
