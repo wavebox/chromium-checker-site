@@ -8,8 +8,19 @@ import {
 
 // https://chromestatus.com/features
 export const descriptors = {
-  111: {
+  112: {
     releaseDate: 'Pre-release',
+    isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5599641280708608',
+        name: 'Feature: CSS animation-composition property',
+        test: () => supportsCSSProp('animationComposition')
+      }
+    ]
+  },
+  111: {
+    releaseDate: '2023-03-07',
     isPreRelease: true,
     tests: [
       {
