@@ -205,9 +205,9 @@ function main () {
   }
   $setText('[data-hook="ua-client-hints"]', window.navigator.userAgentData && window.navigator.userAgentData.brands
     ? window.navigator.userAgentData.brands
-        .filter(({ brand }) => brand !== ';Not A Brand')
-        .map(({ brand, version }) => `${brand} ${version}`)
-        .join(', ')
+      .filter(({ brand }) => brand !== ';Not A Brand')
+      .map(({ brand, version }) => `${brand} ${version}`)
+      .join(', ')
     : 'Not available')
 }
 
