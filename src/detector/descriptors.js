@@ -8,9 +8,19 @@ import {
 
 // https://chromestatus.com/features
 export const descriptors = {
-  112: {
+  113: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5109745420075008',
+        name: 'image-set',
+        test: () => supportsCSSValue('backgroundImage', 'image-set(url("/assets/wavebox.svg") 1x, url("/assets/wavebox.svg") 2x)')
+      }
+    ]
+  },
+  112: {
+    releaseDate: '2023-04-04',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5599641280708608',
