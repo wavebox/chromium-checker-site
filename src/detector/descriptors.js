@@ -8,9 +8,29 @@ import {
 
 // https://chromestatus.com/features
 export const descriptors = {
-  113: {
+  114: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5073244152922112',
+        name: 'ArrayBuffer.prototype.transfer',
+        test: () => isFunction(ArrayBuffer.prototype.transfer)
+      },
+      {
+        url: 'https://chromestatus.com/feature/5186382643855360',
+        name: 'Scrollend Event',
+        test: () => document.body.onscrollend !== undefined // null or function
+      },
+      {
+        url: 'https://chromestatus.com/feature/5463833265045504',
+        name: 'Feature: The Popover API',
+        test: () => document.body.popover !== undefined // null or function
+      }
+    ]
+  },
+  113: {
+    releaseDate: '2023-05-02',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5109745420075008',
