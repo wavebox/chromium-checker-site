@@ -8,9 +8,19 @@ import {
 
 // https://chromestatus.com/features
 export const descriptors = {
-  114: {
+  115: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/6752840701706240',
+        name: 'Scroll-driven animations',
+        test: () => supportsCSSProp('animationTimeline')
+      }
+    ]
+  },
+  114: {
+    releaseDate: '2023-05-30',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5073244152922112',
