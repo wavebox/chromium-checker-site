@@ -8,8 +8,19 @@ import {
 
 // https://chromestatus.com/features
 export const descriptors = {
-  115: {
+  116: {
     releaseDate: 'Pre-release',
+    isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5202879349522432',
+        name: 'AbortSignal.any()',
+        test: () => isFunction(window.AbortSignal.any)
+      }
+    ]
+  },
+  115: {
+    releaseDate: '2023-07-20',
     isPreRelease: true,
     tests: [
       {
