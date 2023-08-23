@@ -8,9 +8,24 @@ import {
 
 // https://chromestatus.com/features
 export const descriptors = {
-  116: {
+  117: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5714791975878656',
+        name: 'Array grouping',
+        test: () => isFunction(Object.groupBy)
+      },
+      {
+        url: 'https://chromestatus.com/feature/5145771917180928',
+        name: 'CSS text-wrap: pretty',
+        test: () => supportsCSSValue('textWrap', 'pretty')
+      }
+    ]
+  },
+  116: {
+    releaseDate: '2023-08-09',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5202879349522432',
