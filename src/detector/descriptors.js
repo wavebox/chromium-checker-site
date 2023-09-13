@@ -8,9 +8,19 @@ import {
 
 // https://chromestatus.com/features
 export const descriptors = {
-  117: {
+  118: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/6237096230518784',
+        name: 'Feature: CSS logical flow-relative values',
+        test: () => supportsCSSValue('float', 'inline-start')
+      }
+    ]
+  },
+  117: {
+    releaseDate: '2023-09-12',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5714791975878656',
