@@ -8,9 +8,24 @@ import {
 
 // https://chromestatus.com/features
 export const descriptors = {
-  118: {
+  119: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5810984110784512',
+        name: 'Promise.withResolvers',
+        test: () => isFunction(Promise.withResolvers)
+      },
+      {
+        url: 'Feature: :user-valid and :user-invalid CSS pseudo-classes',
+        name: 'Promise.withResolvers',
+        test: () => supportsCSSQuery('*:user-invalid')
+      }
+    ]
+  },
+  118: {
+    releaseDate: '2023-10-10',
     tests: [
       {
         url: 'https://chromestatus.com/feature/6237096230518784',
@@ -213,11 +228,6 @@ export const descriptors = {
   105: {
     releaseDate: '2022-08-30',
     tests: [
-      {
-        url: 'https://chromestatus.com/feature/5786893650231296',
-        name: 'Feature: Sanitizer API MVP',
-        test: () => isFunction(document.body.setHTML)
-      },
       {
         url: 'https://chromestatus.com/feature/5452774595624960',
         name: 'blocking=rendering attribute on scripts and style sheets',
@@ -666,11 +676,6 @@ export const descriptors = {
   79: {
     releaseDate: '2019-12-10',
     tests: [
-      {
-        url: 'https://chromestatus.com/feature/5714277878988800',
-        name: 'CSS min(), max() and clamp()',
-        test: () => supportsCSSValue('height', 'min(1px, 10px)')
-      },
       {
         url: 'https://chromestatus.com/feature/5685958032752640',
         name: 'font-optical-sizing',
