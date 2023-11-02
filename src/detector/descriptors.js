@@ -8,8 +8,19 @@ import {
 
 // https://chromestatus.com/features
 export const descriptors = {
-  119: {
+  120: {
     releaseDate: 'Pre-release',
+    isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5751531651465216',
+        name: 'Feature: CSS :dir() pseudo-class selector',
+        test: () => supportsCSSQuery('*:dir(ltr)')
+      }
+    ]
+  },
+  119: {
+    releaseDate: '2023-10-31',
     isPreRelease: true,
     tests: [
       {
@@ -18,8 +29,8 @@ export const descriptors = {
         test: () => isFunction(Promise.withResolvers)
       },
       {
-        url: 'Feature: :user-valid and :user-invalid CSS pseudo-classes',
-        name: 'Promise.withResolvers',
+        url: 'https://chromestatus.com/feature/5132477781245952',
+        name: 'Feature: :user-valid and :user-invalid CSS pseudo-classes',
         test: () => supportsCSSQuery('*:user-invalid')
       }
     ]
