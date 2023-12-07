@@ -8,9 +8,24 @@ import {
 
 // https://chromestatus.com/features
 export const descriptors = {
-  120: {
+  121: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5111537299881984',
+        name: 'Feature: HTMLSelectElement showPicker()',
+        test: () => isFunction(document.createElement('select').showPicker)
+      },
+      {
+        url: 'https://chromestatus.com/feature/5176417696612352',
+        name: 'Feature: Feature detection for supported clipboard formats',
+        test: () => isFunction(window.ClipboardItem.supports)
+      }
+    ]
+  },
+  120: {
+    releaseDate: '2023-12-05',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5751531651465216',
