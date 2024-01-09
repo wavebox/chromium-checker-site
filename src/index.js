@@ -157,7 +157,11 @@ function renderChromium (detection) {
             ? 'info'
             : optional ? 'warning' : 'danger'
           $listEl.classList.add(`list-group-item-${mod}`)
-          targets.status.textContent = optional ? 'UNAVAILABLE' : 'FAIL'
+          targets.status.textContent = isPreRelease
+            ? 'UPCOMING'
+            : optional
+              ? 'UNAVAILABLE'
+              : 'FAIL'
           targets.status.classList.add(`bg-${mod}`)
         }
         targets.name.textContent = name
