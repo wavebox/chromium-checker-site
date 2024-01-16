@@ -36,7 +36,6 @@ export const descriptors = {
   },
   119: {
     releaseDate: '2023-10-31',
-    isPreRelease: true,
     tests: [
       {
         url: 'https://chromestatus.com/feature/5810984110784512',
@@ -87,7 +86,6 @@ export const descriptors = {
   },
   115: {
     releaseDate: '2023-07-20',
-    isPreRelease: true,
     tests: [
       {
         url: 'https://chromestatus.com/feature/6752840701706240',
@@ -138,7 +136,6 @@ export const descriptors = {
   },
   111: {
     releaseDate: '2023-03-07',
-    isPreRelease: true,
     tests: [
       {
         url: 'https://chromestatus.com/feature/5165381072191488',

@@ -122,7 +122,7 @@ function renderChromium (detection) {
 
       const classNameMod = result === true
         ? 'success'
-        : isPreRelease || pass === tests.length - 1
+        : isPreRelease || (tests.length > 1 && pass === tests.length - 1)
           ? 'info'
           : 'danger'
 
@@ -153,7 +153,7 @@ function renderChromium (detection) {
           targets.status.textContent = 'PASS'
           targets.status.classList.add('bg-success')
         } else {
-          const mod = isPreRelease || pass === tests.length - 1
+          const mod = isPreRelease || (tests.length > 1 && pass === tests.length - 1)
             ? 'info'
             : optional ? 'warning' : 'danger'
           $listEl.classList.add(`list-group-item-${mod}`)
