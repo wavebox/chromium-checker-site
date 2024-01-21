@@ -167,11 +167,6 @@ export const descriptors = {
         test: () => isFunction(new window.AudioContext().setSinkId)
       },
       {
-        url: 'https://chromestatus.com/feature/5729461725036544',
-        name: 'Iframe credentialless',
-        test: () => typeof (document.createElement('iframe').credentialless) === 'boolean'
-      },
-      {
         url: 'https://chromestatus.com/feature/5659629104136192',
         name: 'Features: Remove window.webkitStorageInfo',
         test: () => window.webkitStorageInfo === undefined
