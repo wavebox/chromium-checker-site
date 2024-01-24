@@ -8,9 +8,19 @@ import {
 
 // https://chromestatus.com/features
 export const descriptors = {
-  121: {
+  122: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/6280344932450304',
+        name: 'Feature: Set methods',
+        test: () => isFunction(window.Set.prototype.union)
+      }
+    ]
+  },
+  121: {
+    releaseDate: '2024-01-23',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5111537299881984',
