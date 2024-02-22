@@ -8,9 +8,34 @@ import {
 
 // https://chromestatus.com/features
 export const descriptors = {
-  122: {
+  123: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5205586941837312',
+        name: 'Feature: \'pagereveal\' event',
+        test: () => window.onpagereveal !== undefined // null or function
+      },
+      {
+        url: 'https://chromestatus.com/feature/4909742688567296',
+        name: 'Feature: CSS light-dark() Color Function',
+        test: () => supportsCSSValue('background', 'light-dark(lime, green)')
+      },
+      {
+        url: 'https://chromestatus.com/feature/5076557983121408',
+        name: 'Feature: NavigationActivation',
+        test: () => isObject(window.navigation.activation)
+      },
+      {
+        url: 'https://chromestatus.com/feature/5176596826161152',
+        name: 'Feature: field-sizing CSS property',
+        test: () => supportsCSSProp('fieldSizing')
+      }
+    ]
+  },
+  122: {
+    releaseDate: '2024-02-21',
     tests: [
       {
         url: 'https://chromestatus.com/feature/6280344932450304',
