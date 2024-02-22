@@ -34,7 +34,7 @@
       </div>
     </div>
     <div data-template="detect-version-test">
-      <li class="list-group-item">
+      <li class="list-group-item p-3">
         <div>
           <span class="badge" data-tt="status"></span>
           <span data-tt="name"></span>
@@ -89,7 +89,7 @@
               </p>
             </div>
             <div class="col-sm-6 offset-sm-3 alternative-browsers">
-              <div class="list-group">
+              <div class="list-group" data-hook="alternative-browsers">
                 <a class="list-group-item list-group-item-action" href="https://brave.com/download" target="_blank">
                   <img src="/assets/brave.png" class="browser-icon" />
                   Brave
@@ -156,7 +156,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-sm-8 offset-sm-2">
+              <div class="col-sm-6 offset-sm-3">
                 <h5>There are <span data-hook="vulnerability-count"></span> known vulnerabilities in this version</h5>
                 <div class="list-group" id="vulnerability-list">
                 </div>
@@ -193,64 +193,66 @@
         </div>
 
         <br />
-        <div class="row mb-2">
-          <div class="col-sm-8 offset-sm-2">
-            <h3 class="text-blue">How did we figure this out?</h3>
-          </div>
-        </div>
-        <br />
-        <div class="row mt-2 mb-2">
-          <div class="col-sm-8 offset-sm-2">
-            <h5 class="text-blue mb-0">
-              This is what your browser advertises in the UserAgent & Client hints...
-            </h5>
-            <hr class="mt-1" />
-            <div class="hide" data-hook="ua-matching-useragent">
-              <small>
-                <strong class="text-blue">User Agent :</strong>
-                <span class="text-muted" data-hook="ua-useragent"></span>
-              </small>
+        <div class="container">
+          <div class="row mb-2">
+            <div class="col-sm-8 offset-sm-2">
+              <h3 class="text-blue">How did we figure this out?</h3>
             </div>
-            <div class="hide" data-hook="ua-differing-useragent">
-              <div>
+          </div>
+          <br />
+          <div class="row mt-2 mb-2">
+            <div class="col-sm-8 offset-sm-2">
+              <h5 class="text-blue mb-0">
+                This is what your browser advertises in the UserAgent & Client hints...
+              </h5>
+              <hr class="mt-1" />
+              <div class="hide" data-hook="ua-matching-useragent">
                 <small>
-                  <strong class="text-blue">User Agent (Request Headers):</strong>
-                  <span class="text-muted" data-hook="ua-useragent-headers"></span>
+                  <strong class="text-blue">User Agent :</strong>
+                  <span class="text-muted" data-hook="ua-useragent"></span>
                 </small>
+              </div>
+              <div class="hide" data-hook="ua-differing-useragent">
+                <div>
+                  <small>
+                    <strong class="text-blue">User Agent (Request Headers):</strong>
+                    <span class="text-muted" data-hook="ua-useragent-headers"></span>
+                  </small>
+                </div>
+                <div>
+                  <small>
+                    <strong class="text-blue">User Agent (JavaScript):</strong>
+                    <span class="text-muted" data-hook="ua-useragent-js"></span>
+                  </small>
+                </div>
               </div>
               <div>
                 <small>
-                  <strong class="text-blue">User Agent (JavaScript):</strong>
-                  <span class="text-muted" data-hook="ua-useragent-js"></span>
+                  <strong class="text-blue">Client Hints:</strong>
+                  <span class="text-muted" data-hook="ua-client-hints"></span>
                 </small>
               </div>
             </div>
-            <div>
-              <small>
-                <strong class="text-blue">Client Hints:</strong>
-                <span class="text-muted" data-hook="ua-client-hints"></span>
-              </small>
-            </div>
           </div>
-        </div>
-        <br />
-        <div class="row mt-2">
-          <div class="col-sm-8 offset-sm-2">
-            <h5 class="text-blue mb-0">
-              We did some detection and checked available features
-              against known features in each version of Chromium...
-            </h5>
-            <hr class="mt-1" />
-            <p class="text-muted">
-              <small>
-                Each release of Chromium includes a new set of features that are
-                documented on the <a href="https://chromestatus.com/features" target="_blanl">Chrome Platform Status</a>
-                page. We can check to see if these features are present in your browser
-                and then figure out which version of Chromium is being used. Below
-                are what we looked for against each version and whether they could be
-                found or not.
-              </small>
-            </p>
+          <br />
+          <div class="row mt-2">
+            <div class="col-sm-8 offset-sm-2">
+              <h5 class="text-blue mb-0">
+                We did some detection and checked available features
+                against known features in each version of Chromium...
+              </h5>
+              <hr class="mt-1" />
+              <p class="text-muted">
+                <small>
+                  Each release of Chromium includes a new set of features that are
+                  documented on the <a href="https://chromestatus.com/features" target="_blanl">Chrome Platform Status</a>
+                  page. We can check to see if these features are present in your browser
+                  and then figure out which version of Chromium is being used. Below
+                  are what we looked for against each version and whether they could be
+                  found or not.
+                </small>
+              </p>
+            </div>
           </div>
         </div>
 

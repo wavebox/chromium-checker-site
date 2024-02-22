@@ -20,6 +20,12 @@ import './styles/chromium.css'
  * Renders the not chromium view
  */
 function renderNotChromium () {
+  // Shuffle the alternates
+  const $alternatives = document.querySelector('[data-hook="alternative-browsers"]')
+  for (let i = $alternatives.children.length; i >= 0; i--) {
+    $alternatives.appendChild($alternatives.children[Math.random() * i | 0])
+  }
+
   $show('#not-chromium')
   const parser = new UAParser(window.navigator.userAgent)
   switch (parser.getBrowser().name) {
