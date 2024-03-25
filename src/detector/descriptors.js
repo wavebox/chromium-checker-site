@@ -8,9 +8,24 @@ import {
 
 // https://chromestatus.com/features
 export const descriptors = {
-  123: {
+  124: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5479301497749504',
+        name: 'Feature: \'pageswap\' event',
+        test: () => window.onpageswap !== undefined // null or function
+      },
+      {
+        url: 'https://chromestatus.com/feature/5189728691290112',
+        name: 'Feature: WebSocketStream',
+        test: () => isFunction(window.WebSocketStream)
+      }
+    ]
+  },
+  123: {
+    releaseDate: '2024-03-27',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5205586941837312',
