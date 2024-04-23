@@ -8,9 +8,33 @@ import {
 
 // https://chromestatus.com/features
 export const descriptors = {
-  124: {
+  125: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5500897196244992',
+        name: 'Feature: CSS Stepped Value Functions',
+        test: () => {
+          const $el = document.createElement('div')
+          $el.style.width = 'round(25.5px, 50px)'
+          return $el.style.width === 'calc(50px)'
+        }
+      },
+      {
+        url: 'https://chromestatus.com/feature/5586433790443520',
+        name: 'Feature: CSS custom state new :state() syntax',
+        test: () => supportsCSSQuery('body:state(checked)')
+      },
+      {
+        url: 'https://chromestatus.com/feature/5597608644968448',
+        name: 'Feature: Compute Pressure',
+        test: () => isFunction(window.PressureObserver)
+      }
+    ]
+  },
+  124: {
+    releaseDate: '2024-04-17',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5479301497749504',
