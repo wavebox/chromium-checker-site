@@ -8,9 +8,29 @@ import {
 
 // https://chromestatus.com/features
 export const descriptors = {
-  125: {
+  126: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/4722261258928128',
+        name: 'Feature: Close requests for CloseWatcher, <dialog>, and popover=""',
+        test: () => isFunction(window.CloseWatcher)
+      },
+      {
+        url: 'https://chromestatus.com/feature/5606741606924288',
+        name: 'Feature: toJSON for GeolocationCoordinates and GeolocationPosition',
+        test: () => isFunction(window.GeolocationCoordinates.prototype.toJSON)
+      },
+      {
+        url: 'https://chromestatus.com/feature/5774579609108480',
+        name: 'Feature: visualViewport.onscrollend Support',
+        test: () => window.visualViewport.onscrollend !== undefined
+      }
+    ]
+  },
+  125: {
+    releaseDate: '2024-05-14',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5500897196244992',
