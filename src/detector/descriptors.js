@@ -8,9 +8,19 @@ import {
 
 // https://chromestatus.com/features
 export const descriptors = {
-  126: {
+  127: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5720910061371392',
+        name: 'Feature: CSS font-size-adjust',
+        test: () => supportsCSSProp('fontSizeAdjust')
+      }
+    ]
+  },
+  126: {
+    releaseDate: '2024-06-12',
     tests: [
       {
         url: 'https://chromestatus.com/feature/4722261258928128',
