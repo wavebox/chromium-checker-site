@@ -8,6 +8,22 @@ import {
 
 // https://chromestatus.com/features
 export const descriptors = {
+  128: {
+    releaseDate: 'Pre-release',
+    isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5152412192210944',
+        name: 'Feature: CSS ruby-align property',
+        test: () => supportsCSSProp('rubyAlign')
+      },
+      {
+        url: 'https://chromestatus.com/feature/5201014343073792',
+        name: 'document.caretPositionFromPoint API',
+        test: () => isFunction(document.caretPositionFromPoint)
+      }
+    ]
+  },
   127: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
@@ -55,11 +71,6 @@ export const descriptors = {
         url: 'https://chromestatus.com/feature/5586433790443520',
         name: 'Feature: CSS custom state new :state() syntax',
         test: () => supportsCSSQuery('body:state(checked)')
-      },
-      {
-        url: 'https://chromestatus.com/feature/5597608644968448',
-        name: 'Feature: Compute Pressure',
-        test: () => isFunction(window.PressureObserver)
       }
     ]
   },

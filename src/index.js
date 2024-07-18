@@ -59,8 +59,19 @@ function getUAInfo () {
   }
 
   if (!info.name || !info.version) {
-    info.name = parser.getBrowser().name
-    info.version = (parser.getBrowser().version || '').split('.')[0]
+    // Opera's UA advertises itself as Opera, but also includes the Chromium version
+    // In this instance, use the engine version rather than browser version
+    const browserName = parser.getBrowser().name
+    switch (browserName) {
+      case 'Opera':
+        info.name = browserName
+        info.version = parser.getEngine().version.split('.')[0]
+        break
+      default:
+        info.name = browserName
+        info.version = (parser.getBrowser().version || '').split('.')[0]
+        break
+    }
   }
   if (typeof (window.navigator.brave) === 'object') {
     info.name = 'Brave'
