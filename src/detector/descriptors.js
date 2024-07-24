@@ -21,12 +21,16 @@ export const descriptors = {
         url: 'https://chromestatus.com/feature/5201014343073792',
         name: 'document.caretPositionFromPoint API',
         test: () => isFunction(document.caretPositionFromPoint)
+      },
+      {
+        url: 'https://chromestatus.com/feature/6315704705089536',
+        name: 'Feature: Promise.try',
+        test: () => isFunction(Promise.try)
       }
     ]
   },
   127: {
-    releaseDate: 'Pre-release',
-    isPreRelease: true,
+    releaseDate: '2024-07-21',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5720910061371392',
