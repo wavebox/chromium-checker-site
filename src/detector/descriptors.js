@@ -43,11 +43,6 @@ export const descriptors = {
     releaseDate: '2024-06-12',
     tests: [
       {
-        url: 'https://chromestatus.com/feature/4722261258928128',
-        name: 'Feature: Close requests for CloseWatcher, <dialog>, and popover=""',
-        test: () => isFunction(window.CloseWatcher)
-      },
-      {
         url: 'https://chromestatus.com/feature/5606741606924288',
         name: 'Feature: toJSON for GeolocationCoordinates and GeolocationPosition',
         test: () => isFunction(window.GeolocationCoordinates.prototype.toJSON)
