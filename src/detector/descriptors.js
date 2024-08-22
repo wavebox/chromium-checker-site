@@ -7,10 +7,21 @@ import {
 } from './utils'
 
 // https://chromestatus.com/features
+// https://chromestatus.com/newfeatures?q=browsers.chrome.desktop%253D129
 export const descriptors = {
-  128: {
+  129: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5193021205774336',
+        name: 'Feature: Intl.DurationFormat',
+        test: () => isFunction(Intl.DurationFormat)
+      }
+    ]
+  },
+  128: {
+    releaseDate: '2024-08-21',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5152412192210944',
