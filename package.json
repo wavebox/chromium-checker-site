@@ -19,10 +19,10 @@
     "copy-webpack-plugin": "^12.0.2",
     "css-loader": "^7.1.2",
     "html-webpack-plugin": "^5.6.0",
-    "mini-css-extract-plugin": "^2.9.0",
-    "standard": "^17.1.0",
+    "mini-css-extract-plugin": "^2.9.1",
+    "standard": "^17.1.2",
     "style-loader": "^4.0.0",
-    "webpack": "^5.93.0",
+    "webpack": "^5.94.0",
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
@@ -32,6 +32,6 @@
     "escape-html": "^1.0.3",
     "github-fork-ribbon-css": "^0.2.3",
     "timeago.js": "^4.0.2",
-    "ua-parser-js": "^1.0.38"
+    "ua-parser-js": "^1.0.39"
   }
 }

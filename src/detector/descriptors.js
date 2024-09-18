@@ -9,9 +9,19 @@ import {
 // https://chromestatus.com/features
 // https://chromestatus.com/newfeatures?q=browsers.chrome.desktop%253D129
 export const descriptors = {
-  129: {
+  130: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5162398704205824',
+        name: 'Feature: Full and unprefixed box-decoration-break support',
+        test: () => supportsCSSProp('boxDecorationBreak')
+      }
+    ]
+  },
+  129: {
+    releaseDate: '2024-09-17',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5193021205774336',
