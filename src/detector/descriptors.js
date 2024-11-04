@@ -9,9 +9,19 @@ import {
 // https://chromestatus.com/features
 // https://chromestatus.com/newfeatures?q=browsers.chrome.desktop%253D129
 export const descriptors = {
-  130: {
+  131: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5094192052436992',
+        name: 'Feature: CSS Anchor Positioning: anchor-scope',
+        test: () => supportsCSSProp('anchorScope')
+      }
+    ]
+  },
+  130: {
+    releaseDate: '2024-10-15',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5162398704205824',
