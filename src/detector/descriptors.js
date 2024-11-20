@@ -9,9 +9,24 @@ import {
 // https://chromestatus.com/features
 // https://chromestatus.com/newfeatures?q=browsers.chrome.desktop%253D129
 export const descriptors = {
-  131: {
+  132: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5185813744975872',
+        name: 'Feature: Device Posture API',
+        test: () => window.navigator.devicePosture !== undefined
+      },
+      {
+        url: 'https://chromestatus.com/feature/6201053052928000',
+        name: 'Feature: Sideways writing modes',
+        test: () => supportsCSSValue('writingMode', 'sideways-rl')
+      }
+    ]
+  },
+  131: {
+    releaseDate: '2024-11-12',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5094192052436992',
