@@ -9,9 +9,24 @@ import {
 // https://chromestatus.com/features
 // https://chromestatus.com/newfeatures?q=browsers.chrome.desktop%253D129
 export const descriptors = {
-  132: {
+  133: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5106098833719296',
+        name: 'Feature: Atomics.pause',
+        test: () => isFunction(Atomics.pause)
+      },
+      {
+        url: 'https://chromestatus.com/feature/5083257285378048',
+        name: 'Feature: Animation.overallProgress',
+        test: () => (new window.Animation()).overallProgress !== undefined
+      }
+    ]
+  },
+  132: {
+    releaseDate: '2025-01-14',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5185813744975872',
