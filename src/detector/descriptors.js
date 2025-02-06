@@ -9,9 +9,19 @@ import {
 // https://chromestatus.com/features
 // https://chromestatus.com/newfeatures?q=browsers.chrome.desktop%253D129
 export const descriptors = {
-  133: {
+  134: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5847855083028480',
+        name: 'Feature: Error.isError',
+        test: () => isFunction(Error.isError)
+      }
+    ]
+  },
+  133: {
+    releaseDate: '2025-02-04',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5106098833719296',
