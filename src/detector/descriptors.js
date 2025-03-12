@@ -9,9 +9,24 @@ import {
 // https://chromestatus.com/features
 // https://chromestatus.com/newfeatures?q=browsers.chrome.desktop%253D129
 export const descriptors = {
-  134: {
+  135: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5164400693215232',
+        name: 'Feature: Float16Array',
+        test: () => isFunction(window.Float16Array)
+      },
+      {
+        url: 'https://chromestatus.com/feature/4654499737632768',
+        name: 'Feature: fetchLater API',
+        test: () => isFunction(window.fetchLater)
+      }
+    ]
+  },
+  134: {
+    releaseDate: '2025-03-05',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5847855083028480',
