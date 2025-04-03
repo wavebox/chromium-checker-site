@@ -9,9 +9,19 @@ import {
 // https://chromestatus.com/features
 // https://chromestatus.com/newfeatures?q=browsers.chrome.desktop%253D129
 export const descriptors = {
-  135: {
+  136: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5179154657705984',
+        name: 'Feature: RegExp.escape',
+        test: () => isFunction(RegExp.escape)
+      }
+    ]
+  },
+  135: {
+    releaseDate: '2025-04-01',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5164400693215232',
