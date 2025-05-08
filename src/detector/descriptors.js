@@ -9,9 +9,19 @@ import {
 // https://chromestatus.com/features
 // https://chromestatus.com/newfeatures?q=browsers.chrome.desktop%253D129
 export const descriptors = {
-  136: {
+  137: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5113638848561152',
+        name: 'Feature: CSS reading-flow, reading-order properties',
+        test: () => supportsCSSProp('readingFlow')
+      }
+    ]
+  },
+  136: {
+    releaseDate: '2025-05-29',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5179154657705984',
