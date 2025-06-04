@@ -9,9 +9,19 @@ import {
 // https://chromestatus.com/features
 // https://chromestatus.com/newfeatures?q=browsers.chrome.desktop%253D129
 export const descriptors = {
-  137: {
+  138: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/6176445286842368',
+        name: 'Feature: CSS \'stretch\' sizing keyword',
+        test: () => supportsCSSValue('width', 'stretch')
+      }
+    ]
+  },
+  137: {
+    releaseDate: '2025-05-27',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5113638848561152',
@@ -21,7 +31,7 @@ export const descriptors = {
     ]
   },
   136: {
-    releaseDate: '2025-05-29',
+    releaseDate: '2025-04-29',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5179154657705984',
