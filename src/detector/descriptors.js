@@ -9,9 +9,19 @@ import {
 // https://chromestatus.com/features
 // https://chromestatus.com/newfeatures?q=browsers.chrome.desktop%253D129
 export const descriptors = {
-  138: {
+  139: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5357329815699456',
+        name: 'Feature: Corner shaping (corner-shape, superellipse, squircle)',
+        test: () => supportsCSSProp('cornerShape')
+      }
+    ]
+  },
+  138: {
+    releaseDate: '2025-06-01',
     tests: [
       {
         url: 'https://chromestatus.com/feature/6176445286842368',
