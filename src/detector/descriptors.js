@@ -9,9 +9,19 @@ import {
 // https://chromestatus.com/features
 // https://chromestatus.com/newfeatures?q=browsers.chrome.desktop%253D129
 export const descriptors = {
-  139: {
+  140: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5189126177161216',
+        name: 'Feature: CSS scroll-target-group property',
+        test: () => supportsCSSProp('scrollTargetGroup')
+      }
+    ]
+  },
+  139: {
+    releaseDate: '2025-07-05',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5357329815699456',
