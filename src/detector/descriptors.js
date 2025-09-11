@@ -9,9 +9,19 @@ import {
 // https://chromestatus.com/features
 // https://chromestatus.com/newfeatures?q=browsers.chrome.desktop%253D129
 export const descriptors = {
-  140: {
+  141: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5745430754230272',
+        name: 'Feature: ARIA Notify API',
+        test: () => isFunction(document.ariaNotify)
+      }
+    ]
+  },
+  140: {
+    releaseDate: '2025-08-02',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5189126177161216',
