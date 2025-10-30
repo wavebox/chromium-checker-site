@@ -9,9 +9,29 @@ import {
 // https://chromestatus.com/features
 // https://chromestatus.com/newfeatures?q=browsers.chrome.desktop%253D129
 export const descriptors = {
-  141: {
+  143: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5177580990496768',
+        name: 'Feature: CSS Anchored Fallback Container Queries',
+        test: () => supportsCSSValue('containerType', 'anchored')
+      }
+    ]
+  },
+  142: {
+    releaseDate: '2025-10-29',
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5067126381215744',
+        name: 'Feature: document.activeViewTransition property',
+        test: () => document.activeViewTransition !== undefined
+      }
+    ]
+  },
+  141: {
+    releaseDate: '2025-09-30',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5745430754230272',
