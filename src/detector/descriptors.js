@@ -9,9 +9,27 @@ import {
 // https://chromestatus.com/features
 // https://chromestatus.com/newfeatures?q=browsers.chrome.desktop%253D129
 export const descriptors = {
-  143: {
+  144: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5668134046523392',
+        name: 'Feature: Temporal API',
+        test: () => window.Temporal !== undefined
+      },
+      {
+        url: 'https://chromestatus.com/feature/5196219245109248',
+        name: 'Feature: SVGAElement ping, hreflang, type, and referrerPolicy attributes',
+        test: () => {
+          const svgA = document.createElementNS('http://www.w3.org/2000/svg', 'a')
+          return svgA.ping !== undefined && svgA.hreflang !== undefined
+        }
+      }
+    ]
+  },
+  143: {
+    releaseDate: '2025-12-02',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5177580990496768',
