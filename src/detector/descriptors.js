@@ -9,9 +9,24 @@ import {
 // https://chromestatus.com/features
 // https://chromestatus.com/newfeatures?q=browsers.chrome.desktop%253D129
 export const descriptors = {
-  144: {
+  145: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5079678972985344',
+        name: 'Feature: CSS text-justify property',
+        test: () => supportsCSSProp('textJustify')
+      },
+      {
+        url: 'https://chromestatus.com/feature/5814067399491584',
+        name: 'Feature: Sanitizer API',
+        test: () => isFunction(window.Sanitizer)
+      }
+    ]
+  },
+  144: {
+    releaseDate: '2026-01-13',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5668134046523392',
