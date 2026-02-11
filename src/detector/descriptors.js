@@ -9,19 +9,24 @@ import {
 // https://chromestatus.com/features
 // https://chromestatus.com/newfeatures?q=browsers.chrome.desktop%253D129
 export const descriptors = {
-  145: {
+  146: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5193275975794688',
+        name: 'Feature: Iterator Sequencing (Iterator.concat)',
+        test: () => isFunction(window.Iterator?.concat)
+      }
+    ]
+  },
+  145: {
+    releaseDate: '2026-02-10',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5079678972985344',
         name: 'Feature: CSS text-justify property',
         test: () => supportsCSSProp('textJustify')
-      },
-      {
-        url: 'https://chromestatus.com/feature/5814067399491584',
-        name: 'Feature: Sanitizer API',
-        test: () => isFunction(window.Sanitizer)
       }
     ]
   },
