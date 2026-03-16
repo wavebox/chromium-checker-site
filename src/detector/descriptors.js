@@ -9,9 +9,29 @@ import {
 // https://chromestatus.com/features
 // https://chromestatus.com/newfeatures?q=browsers.chrome.desktop%253D129
 export const descriptors = {
-  146: {
+  147: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5459864205393920',
+        name: 'Feature: CSS border-shape',
+        test: () => supportsCSSProp('borderShape')
+      },
+      {
+        url: 'https://chromestatus.com/feature/5194399398756352',
+        name: 'Feature: CSSPseudoElement interface (Element.pseudo())',
+        test: () => isFunction(document.createElement('div').pseudo)
+      },
+      {
+        url: 'https://chromestatus.com/feature/4841046007742464',
+        name: 'Feature: CSS contrast-color()',
+        test: () => supportsCSSValue('color', 'contrast-color(white)')
+      }
+    ]
+  },
+  146: {
+    releaseDate: '2026-03-10',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5193275975794688',
