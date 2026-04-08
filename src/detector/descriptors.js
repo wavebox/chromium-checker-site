@@ -9,19 +9,29 @@ import {
 // https://chromestatus.com/features
 // https://chromestatus.com/newfeatures?q=browsers.chrome.desktop%253D129
 export const descriptors = {
-  147: {
+  148: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5146458504429568',
+        name: 'Feature: CSS revert-rule keyword',
+        test: () => supportsCSSValue('display', 'revert-rule')
+      },
+      {
+        url: 'https://chromestatus.com/feature/5077600085082112',
+        name: 'Feature: CSS text-decoration-skip-ink: all',
+        test: () => supportsCSSValue('textDecorationSkipInk', 'all')
+      }
+    ]
+  },
+  147: {
+    releaseDate: '2026-04-07',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5459864205393920',
         name: 'Feature: CSS border-shape',
         test: () => supportsCSSProp('borderShape')
-      },
-      {
-        url: 'https://chromestatus.com/feature/5194399398756352',
-        name: 'Feature: CSSPseudoElement interface (Element.pseudo())',
-        test: () => isFunction(document.createElement('div').pseudo)
       },
       {
         url: 'https://chromestatus.com/feature/4841046007742464',
