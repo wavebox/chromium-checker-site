@@ -9,9 +9,24 @@ import {
 // https://chromestatus.com/features
 // https://chromestatus.com/newfeatures?q=browsers.chrome.desktop%253D129
 export const descriptors = {
-  148: {
+  149: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/4709921706868736',
+        name: 'Feature: Intl.Locale.prototype.variants',
+        test: () => 'variants' in Intl.Locale.prototype
+      },
+      {
+        url: 'https://chromestatus.com/feature/5157805733183488',
+        name: 'Feature: CSS Gap Decorations (row-rule)',
+        test: () => supportsCSSProp('rowRule')
+      }
+    ]
+  },
+  148: {
+    releaseDate: '2026-05-05',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5146458504429568',
