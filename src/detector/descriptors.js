@@ -9,9 +9,24 @@ import {
 // https://chromestatus.com/features
 // https://chromestatus.com/newfeatures?q=browsers.chrome.desktop%253D129
 export const descriptors = {
-  149: {
+  150: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5104141688635392',
+        name: 'Feature: CSS text-fit property',
+        test: () => supportsCSSProp('textFit')
+      },
+      {
+        url: 'https://chromestatus.com/feature/4547107962486784',
+        name: 'Feature: CSS flex-wrap: balance',
+        test: () => supportsCSSValue('flexWrap', 'balance')
+      }
+    ]
+  },
+  149: {
+    releaseDate: '2026-06-02',
     tests: [
       {
         url: 'https://chromestatus.com/feature/4709921706868736',
