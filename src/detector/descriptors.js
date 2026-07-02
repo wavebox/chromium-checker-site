@@ -10,8 +10,7 @@ import {
 // https://chromestatus.com/newfeatures?q=browsers.chrome.desktop%253D129
 export const descriptors = {
   150: {
-    releaseDate: 'Pre-release',
-    isPreRelease: true,
+    releaseDate: '2026-06-30',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5104141688635392',
