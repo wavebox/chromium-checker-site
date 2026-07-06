@@ -9,6 +9,22 @@ import {
 // https://chromestatus.com/features
 // https://chromestatus.com/newfeatures?q=browsers.chrome.desktop%253D129
 export const descriptors = {
+  151: {
+    releaseDate: 'Pre-release',
+    isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/6560118298771456',
+        name: 'Feature: CSS ruby-overhang property',
+        test: () => supportsCSSProp('rubyOverhang')
+      },
+      {
+        url: 'https://chromestatus.com/feature/5146752165478400',
+        name: 'Feature: textStream() for Response/Request/Blob',
+        test: () => isFunction(Response.prototype.textStream)
+      }
+    ]
+  },
   150: {
     releaseDate: '2026-06-30',
     tests: [
