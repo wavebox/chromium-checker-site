@@ -9,9 +9,19 @@ import {
 // https://chromestatus.com/features
 // https://chromestatus.com/newfeatures?q=browsers.chrome.desktop%253D129
 export const descriptors = {
-  151: {
+  152: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5201338641285120',
+        name: 'Feature: CSS window-drag property',
+        test: () => supportsCSSProp('windowDrag')
+      }
+    ]
+  },
+  151: {
+    releaseDate: '2026-07-28',
     tests: [
       {
         url: 'https://chromestatus.com/feature/6560118298771456',
