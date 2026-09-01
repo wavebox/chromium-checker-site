@@ -9,9 +9,24 @@ import {
 // https://chromestatus.com/features
 // https://chromestatus.com/newfeatures?q=browsers.chrome.desktop%253D129
 export const descriptors = {
-  152: {
+  153: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5908461532610560',
+        name: 'Feature: CSS scroll-axis-lock property',
+        test: () => supportsCSSProp('scrollAxisLock')
+      },
+      {
+        url: 'https://chromestatus.com/feature/5095183554314240',
+        name: 'Feature: Iterator.prototype.join',
+        test: () => isFunction(window.Iterator?.prototype?.join)
+      }
+    ]
+  },
+  152: {
+    releaseDate: '2026-08-25',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5201338641285120',
