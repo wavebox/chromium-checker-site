@@ -9,9 +9,19 @@ import {
 // https://chromestatus.com/features
 // https://chromestatus.com/newfeatures?q=browsers.chrome.desktop%253D129
 export const descriptors = {
-  153: {
+  154: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5205192866922496',
+        name: 'Feature: Iterator.prototype.includes',
+        test: () => isFunction(window.Iterator?.prototype?.includes)
+      }
+    ]
+  },
+  153: {
+    releaseDate: '2026-09-08',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5908461532610560',
