@@ -15,7 +15,7 @@ export const descriptors = {
     tests: [
       {
         url: 'https://chromestatus.com/feature/5324559251275776',
-        name: 'Feature: CSS ramdom() function',
+        name: 'Feature: CSS random() function',
         test: () => supportsCSSValue('width', 'random(1px, 10px)')
       }
     ]
