@@ -9,9 +9,40 @@ import {
 // https://chromestatus.com/features
 // https://chromestatus.com/newfeatures?q=browsers.chrome.desktop%253D129
 export const descriptors = {
-  154: {
+  156: {
     releaseDate: 'Pre-release',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5324559251275776',
+        name: 'Feature: CSS ramdom() function',
+        test: () => supportsCSSValue('width', 'random(1px, 10px)')
+      }
+    ]
+  }
+  155: {
+    releaseDate: '2026-10-06',
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5197863732772864',
+        name: 'Feature: CSS margin-trim',
+        test: () => supportsCSSProp('marginTrim')
+      },
+      {
+        url: 'https://chromestatus.com/feature/5146996093616128',
+        name: 'Feature: CSS symbols()',
+        test: () => {
+          try {
+            return CSS.supports('list-style-type', 'symbols(cyclic "•")')
+          } catch {
+            return false
+          }
+        }
+      }
+    ]
+  }
+  154: {
+    releaseDate: '2026-09-22',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5205192866922496',
