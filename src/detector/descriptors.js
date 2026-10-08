@@ -16,10 +16,15 @@ export const descriptors = {
       {
         url: 'https://chromestatus.com/feature/5324559251275776',
         name: 'Feature: CSS random() function',
-        test: () => supportsCSSValue('width', 'random(1px, 10px)')
+        test: () => {
+          // Chrome serializes with the implicit random key, e.g. random(element-scoped ua-width-1, 1px, 10px)
+          const $el = document.createElement('div')
+          $el.style.width = 'random(1px, 10px)'
+          return $el.style.width.startsWith('random(') && $el.style.width.endsWith(')')
+        }
       }
     ]
-  }
+  },
   155: {
     releaseDate: '2026-10-06',
     tests: [
@@ -31,16 +36,10 @@ export const descriptors = {
       {
         url: 'https://chromestatus.com/feature/5146996093616128',
         name: 'Feature: CSS symbols()',
-        test: () => {
-          try {
-            return CSS.supports('list-style-type', 'symbols(cyclic "•")')
-          } catch {
-            return false
-          }
-        }
+        test: () => supportsCSSValue('listStyleType', 'symbols(cyclic "*")')
       }
     ]
-  }
+  },
   154: {
     releaseDate: '2026-09-22',
     tests: [
