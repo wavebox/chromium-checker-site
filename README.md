@@ -1,4 +1,4 @@
-# Chromiumchecker.com
+# <img src=".github/repo-icon.png" width="32" height="32" alt=""> Chromiumchecker.com
 Use feature detection to work out the running version of Chromium. No more UserAgent hackery!
 
 - Uses a known feature list to work out the running version of Chromium
