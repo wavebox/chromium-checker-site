@@ -15,23 +15,24 @@
   },
   "author": "Thomas Beverley <tom@wavebox.io>",
   "license": "MPL-2.0",
+  "engines": {
+    "node": ">=22.15.0"
+  },
   "devDependencies": {
-    "copy-webpack-plugin": "^12.0.2",
-    "css-loader": "^7.1.2",
-    "html-webpack-plugin": "^5.6.0",
-    "mini-css-extract-plugin": "^2.9.1",
+    "copy-webpack-plugin": "^14.0.0",
+    "css-loader": "^7.1.5",
+    "html-webpack-plugin": "^5.6.8",
+    "mini-css-extract-plugin": "^2.10.2",
     "standard": "^17.1.2",
-    "style-loader": "^4.0.0",
-    "webpack": "^5.94.0",
-    "webpack-cli": "^5.1.4"
+    "webpack": "^5.112.2",
+    "webpack-cli": "^7.3.1"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
-    "bootstrap": "^5.3.3",
-    "bootstrap-icons": "^1.11.3",
+    "bootstrap": "^5.3.8",
+    "bootstrap-icons": "^1.13.2",
     "escape-html": "^1.0.3",
     "github-fork-ribbon-css": "^0.2.3",
-    "timeago.js": "^4.0.2",
-    "ua-parser-js": "^1.0.39"
+    "ua-parser-js": "^1.0.41"
   }
 }

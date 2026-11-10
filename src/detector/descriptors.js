@@ -7,11 +7,41 @@ import {
 } from './utils'
 
 // https://chromestatus.com/features
-// https://chromestatus.com/newfeatures?q=browsers.chrome.desktop%253D129
+// https://chromestatus.com/release-notes/158
 export const descriptors = {
-  156: {
-    releaseDate: 'Pre-release',
+  158: {
+    releaseDate: '2026-11-17 (scheduled)',
     isPreRelease: true,
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/5174965228929024',
+        name: 'Feature: CSS Custom Highlight Universal Selector ::highlight(*)',
+        test: () => supportsCSSQuery('::highlight(*)')
+      },
+      {
+        url: 'https://chromestatus.com/feature/5069051687731200',
+        name: 'Feature: CSS flow-start and flow-end alignment keywords',
+        test: () => supportsCSSValue('alignItems', 'flow-start') && supportsCSSValue('alignItems', 'flow-end')
+      }
+    ]
+  },
+  157: {
+    releaseDate: '2026-11-03',
+    tests: [
+      {
+        url: 'https://chromestatus.com/feature/6294595288825856',
+        name: 'Feature: CSS text-overflow string value',
+        test: () => supportsCSSValue('textOverflow', '"..."')
+      },
+      {
+        url: 'https://chromestatus.com/feature/5178263526834176',
+        name: 'Feature: CSS text-decoration-inset',
+        test: () => supportsCSSProp('textDecorationInset')
+      }
+    ]
+  },
+  156: {
+    releaseDate: '2026-10-20',
     tests: [
       {
         url: 'https://chromestatus.com/feature/5324559251275776',
